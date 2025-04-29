@@ -32,7 +32,7 @@ export default defineConfig({
       filename: "meduzaFooter.js",
       exposes: {
         "./App": "./src/App.vue",
-        "./hooks/useSwitchHeaderLanguage": "./src/shared/config/i18n/useSwitchLanguage",
+        "./hooks/useSwitchFooterLanguage": "./src/shared/config/i18n/useSwitchLanguage",
       },
       shared: ["vue"],
     }),
