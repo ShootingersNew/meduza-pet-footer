@@ -1,18 +1,17 @@
 <template>
-  <footer-component></footer-component>
+  <footer-component />
 </template>
 
 <script lang="ts">
 import 'meduza-pet-ui-kit/styles'
-import 'meduza-pet-ui-kit/variables'
 import { defineComponent } from 'vue'
 import { FooterComponent } from './widgets'
+
 export default defineComponent({
   name: 'App',
   components: {
     FooterComponent,
   },
-  setup() {},
 })
 </script>
 <style>

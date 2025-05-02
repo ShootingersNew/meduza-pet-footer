@@ -9,7 +9,7 @@ import vueDevTools from 'vite-plugin-vue-devtools'
 // https://vite.dev/config/
 export default defineConfig({
   preview: {
-    port: 5005,
+    port: 5006,
   },
   build: {
     target: 'esnext',
