@@ -9,7 +9,7 @@ import vueDevTools from 'vite-plugin-vue-devtools'
 // https://vite.dev/config/
 export default defineConfig({
   preview: {
-    port: 5005,
+    port: 5006,
   },
   build: {
     target: 'esnext',
@@ -21,7 +21,7 @@ export default defineConfig({
     },
   },
   server: {
-    port: 5005,
+    port: 5006,
   },
   plugins: [
     vue(),
@@ -32,7 +32,7 @@ export default defineConfig({
       filename: "meduzaFooter.js",
       exposes: {
         "./App": "./src/App.vue",
-        "./hooks/useSwitchHeaderLanguage": "./src/shared/config/i18n/useSwitchLanguage",
+        "./hooks/useSwitchFooterLanguage": "./src/shared/config/i18n/useSwitchLanguage",
       },
       shared: ["vue"],
     }),
