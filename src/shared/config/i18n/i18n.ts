@@ -1,14 +1,9 @@
 import { createI18n } from 'vue-i18n';
-import en from '@/widgets/Footer/i18n/en';
-import ru from '@/widgets/Footer/i18n/ru';
-
 const messages = {
-  en,
-  ru
 };
 
 const i18n = createI18n({
-  locale: 'ru',
+  locale: 'en', // default locale
   fallbackLocale: 'en',
   messages,
   legacy: false,
