@@ -31,26 +31,18 @@
   </div>
 </template>
 
-<script lang="ts">
+<script lang="ts" setup>
 import { LinkComponent } from 'meduza-pet-ui-kit'
 import { ELinkTheme } from 'meduza-pet-ui-kit/enums'
-import { defineComponent } from 'vue'
+import { defineOptions } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { contacts, adds } from '../models/additionalsData'
 
-export default defineComponent({
+const { t } = useI18n()
+defineOptions({
   name: 'additionals-component',
   components: {
     LinkComponent,
-  },
-  setup() {
-    const { t } = useI18n()
-    return {
-      ELinkTheme,
-      contacts,
-      adds,
-      t,
-    }
   },
 })
 </script>

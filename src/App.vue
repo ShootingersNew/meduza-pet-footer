@@ -2,24 +2,21 @@
   <footer-component />
 </template>
 
-<script lang="ts">
+<script lang="ts" setup>
 import 'meduza-pet-ui-kit/styles'
-import { defineComponent } from 'vue'
 import { FooterComponent } from './widgets'
 import I18nService from 'host/I18nService'
 import { en, ru } from '@/shared/config/i18n'
 
-export default defineComponent({
+defineOptions({
   name: 'App',
   components: {
     FooterComponent,
   },
-  mounted() {
-    I18nService.addLocales({
-      en,
-      ru,
-    })
-  },
+})
+I18nService.addLocales({
+  en,
+  ru,
 })
 </script>
 <style>
