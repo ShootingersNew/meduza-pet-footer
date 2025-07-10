@@ -8,7 +8,6 @@
 <script lang="ts">
 import { AdditionalsComponent, NavListsComponent } from '@/entities'
 import { defineComponent } from 'vue'
-import { useI18n } from 'vue-i18n'
 
 export default defineComponent({
   name: 'footer-component',
@@ -16,18 +15,7 @@ export default defineComponent({
     AdditionalsComponent,
     NavListsComponent,
   },
-  setup() {
-    const { t } = useI18n({
-      useScope: 'global',
-      messages: {
-        // en,
-        // ru,
-      },
-    })
-    return {
-      t,
-    }
-  },
+  setup() {},
 })
 </script>
 

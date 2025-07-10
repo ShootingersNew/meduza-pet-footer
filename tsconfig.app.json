@@ -1,10 +1,13 @@
 {
   "extends": "@vue/tsconfig/tsconfig.dom.json",
-  "include": ["env.d.ts", "src/**/*", "src/**/*.vue"],
+  "include": ["env.d.ts", "src/**/*", "src/**/*.vue", "remotes.d.ts"],
   "exclude": ["src/**/__tests__/*"],
+  "files": ["env.d.ts", "remotes.d.ts"],
   "compilerOptions": {
+    "types": ["./remotes.d.ts"],
     "target": "ES2022",
     "composite": true,
+    "moduleResolution": "bundler",
     "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.app.tsbuildinfo",
     "baseUrl": ".",
     "paths": {

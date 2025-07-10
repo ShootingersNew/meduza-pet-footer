@@ -6,11 +6,19 @@
 import 'meduza-pet-ui-kit/styles'
 import { defineComponent } from 'vue'
 import { FooterComponent } from './widgets'
+import I18nService from 'host/I18nService'
+import { en, ru } from '@/shared/config/i18n'
 
 export default defineComponent({
   name: 'App',
   components: {
     FooterComponent,
+  },
+  mounted() {
+    I18nService.addLocales({
+      en,
+      ru,
+    })
   },
 })
 </script>
