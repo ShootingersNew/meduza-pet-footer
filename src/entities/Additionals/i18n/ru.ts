@@ -1,5 +1,4 @@
 export default {
-  additionals: {
     contacts: {
       header: 'Контакты',
       items: {
@@ -38,5 +37,4 @@ export default {
         }
       }
     }
-  }
 }

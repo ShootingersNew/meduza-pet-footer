@@ -1,20 +1,20 @@
 <template>
   <div class="additionals">
     <div class="additionals__contacts">
-      <div class="header">{{ t('additionals.contacts.header') }}</div>
+      <div class="header">{{ t('contacts.header') }}</div>
       <ul>
         <li class="contact" :key="contact.link" v-for="contact in contacts">
           <div class="contact__title">
-            {{ contact.title }}
+            {{ t(contact.title) }}
           </div>
           <div class="contact__link">
-            {{ contact.link }}
+            {{ t(contact.link) }}
           </div>
         </li>
       </ul>
     </div>
     <div class="additionals__adds">
-      <div class="header">{{ t('additionals.adds.header') }}</div>
+      <div class="header">{{ t('adds.header') }}</div>
       <ul>
         <li class="adds__list-item" :key="add.link" v-for="add in adds">
           <LinkComponent
@@ -23,7 +23,7 @@
             :href="add.link"
             class="add__link"
           >
-            {{ add.title }}
+            {{ t(add.title) }}
           </LinkComponent>
         </li>
       </ul>
@@ -36,8 +36,7 @@ import { LinkComponent } from 'meduza-pet-ui-kit'
 import { ELinkTheme } from 'meduza-pet-ui-kit/enums'
 import { defineComponent } from 'vue'
 import { useI18n } from 'vue-i18n'
-import { en, ru } from '../i18n/index'
-import { useAdditionalsData } from '../models/additionalsData'
+import { contacts, adds } from '../models/additionalsData'
 
 export default defineComponent({
   name: 'additionals-component',
@@ -45,14 +44,7 @@ export default defineComponent({
     LinkComponent,
   },
   setup() {
-    const { t } = useI18n({
-      useScope: 'global',
-      messages: {
-        en,
-        ru,
-      },
-    })
-    const { contacts, adds } = useAdditionalsData()
+    const { t } = useI18n()
     return {
       ELinkTheme,
       contacts,

@@ -1,5 +1,4 @@
 export default {
-  additionals: {
     contacts: {
       header: 'Contacts',
       items: {
@@ -17,5 +16,4 @@ export default {
         safety: 'Is it safe?'
       }
     }
-  }
 }

@@ -1,7 +1,7 @@
 <template>
   <div class="nav-lists">
-    <div class="nav-lists__list" v-for="list in lists" :key="list.header">
-      <div class="header">{{ list.header }}</div>
+    <div class="nav-lists__list" v-for="list in navData" :key="list.header">
+      <div class="header">{{ t(list.header) }}</div>
       <ul>
         <li class="nav-lists__list-item" :key="item.link" v-for="item in list.items">
           <LinkComponent
@@ -10,7 +10,7 @@
             :href="item.link"
             class="nav-lists__link"
           >
-            {{ item.title }}
+            {{ t(item.title) }}
           </LinkComponent>
         </li>
       </ul>
@@ -23,8 +23,7 @@ import { LinkComponent } from 'meduza-pet-ui-kit'
 import { ELinkTheme } from 'meduza-pet-ui-kit/enums'
 import { defineComponent } from 'vue'
 import { useI18n } from 'vue-i18n'
-import { en, ru } from '../i18n/index'
-import { useNavData } from '../models/links'
+import { navData } from '../models/links'
 
 export default defineComponent({
   name: 'nav-lists-component',
@@ -32,17 +31,8 @@ export default defineComponent({
     LinkComponent,
   },
   setup() {
-    const { t } = useI18n({
-      useScope: 'global',
-      messages: {
-        en,
-        ru,
-      },
-    })
-    const lists = useNavData()
-    console.log(lists)
-
-    return { t, lists, ELinkTheme }
+    const { t } = useI18n()
+    return { ELinkTheme, navData, t }
   },
 })
 </script>
