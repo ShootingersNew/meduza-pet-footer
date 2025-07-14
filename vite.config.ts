@@ -1,50 +1,57 @@
 import { fileURLToPath, URL } from 'node:url'
 
-import federation from "@originjs/vite-plugin-federation"
+import federation from '@originjs/vite-plugin-federation'
 import vue from '@vitejs/plugin-vue'
 import vueJsx from '@vitejs/plugin-vue-jsx'
-import { defineConfig } from 'vite'
+import { defineConfig, loadEnv } from 'vite'
 import vueDevTools from 'vite-plugin-vue-devtools'
 
 // https://vite.dev/config/
-export default defineConfig({
-  preview: {
-    port: 5006,
-  },
-  build: {
-    target: 'esnext',
-    rollupOptions: {
-      output: {
-        globals: { vue: 'Vue' }
-      },
-      external: ['vue']
+export default defineConfig(({ mode }) => {
+  const env = loadEnv(mode, process.cwd())
+  return {
+    preview: {
+      port: 5006,
     },
-  },
-  server: {
-    port: 5006,
-  },
-  plugins: [
-    vue(),
-    vueJsx(),
-    vueDevTools(),
-    federation({
-      name: "meduza-pet-footer",
-      filename: "meduzaFooter.js",
-      exposes: {
-        "./App": "./src/App.vue",
+    build: {
+      target: 'esnext',
+      assetsDir:'footer-assets',
+      rollupOptions: {
+        output: {
+          globals: { vue: 'Vue' },
+        },
+        external: ['vue'],
       },
-      shared: ["vue", "vue-router", "pinia"],
-       remotes: process.env.NODE_ENV === 'test' ? {} : {
-        'host': 'http://localhost:5000/assets/host.js',
-      },
-    }),
-  ],
-  resolve: {
-    alias: {
-      '@': fileURLToPath(new URL('./src', import.meta.url)),
-      ...(process.env.NODE_ENV === 'test' && {
-        'host': fileURLToPath(new URL('./src/__mocks__/host', import.meta.url))
-      })
     },
-  },
+    server: {
+      port: 5006,
+    },
+    plugins: [
+      vue(),
+      vueJsx(),
+      vueDevTools(),
+      federation({
+        name: 'meduza-pet-footer',
+        filename: 'meduzaFooter.js',
+        exposes: {
+          './App': './src/App.vue',
+        },
+        shared: ['vue', 'vue-router', 'pinia'],
+        remotes:
+          env.NODE_ENV === 'test'
+            ? {}
+            : {
+                host: `${env.VITE_HOST_REMOTE}/assets/host.js`,
+              },
+      }),
+    ],
+    resolve: {
+      alias: {
+        '@': fileURLToPath(new URL('./src', import.meta.url)),
+        ...(process.env.NODE_ENV === 'test' && {
+          host: fileURLToPath(new URL('./src/__mocks__/host', import.meta.url)),
+        }),
+      },
+    },
+  }
 })
